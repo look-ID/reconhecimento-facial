@@ -8,6 +8,9 @@
     <title>Face Recognition</title>
 </head>
 <body>
+    <div class="fundo_blur">
+        <!-- Conteúdo do fundo que ficará com blur -->
+    </div>
     <img src="./image/img-logo.png" alt="" class="logo">
     
     <!-- Input para o nome do usuário -->
@@ -23,7 +26,8 @@
     
     <video id="video" autoplay></video>
     <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
-    <div id="mage"> 
+
+    <div id="mage" onclick="abrir_modal()">
         <a href="#" style="color: red; font-weight: bold; font-size: 1.4em;">AVISO</a>
         <a href="#">CLIQUE AQUI</a>
     </div>
@@ -36,7 +40,7 @@
         <div>
             <img src="img/Frame 10.png">
             <div>
-                <p>    
+                <p>
                     Habilite a Câmera para
                     o Reconhecimento Facial.
                 </p>
@@ -46,7 +50,7 @@
         <div>
             <img src="img/Frame 8.png">
             <div>
-                <p>    
+                <p>
                     Habilite a Câmera para
                     o Reconhecimento Facial.
                 </p>
@@ -56,15 +60,21 @@
         <div>
             <img src="img/Frame 9.png">
             <div>
-                <p>    
+                <p>
                     Habilite a Câmera para
                     o Reconhecimento Facial.
                 </p>
             </div>
         </div>
         
-        <aside><p>Prossiga</p></aside>
+        <aside onclick="fechar_modal()"><p>Prossiga</p></aside>
     </section>
+
+    <!-- Script Modal -->
+
+    <script src="modal.js"></script>
+
+    <!-- Script servidor -->
     <script>
         const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');

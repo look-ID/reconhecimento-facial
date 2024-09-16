@@ -1,19 +1,22 @@
+// Função para abrir o modal
 function abrir_modal() {
-    let modal = document.querySelector(".modal");
-    let janela_escura = document.querySelector(".janela_escura");
-    let imagem = document.querySelector(".imagem");
+    let modal = document.querySelector('.modal_fundo');
+    let janela = document.querySelector('#janela_escura');
+    document.body.classList.add('blur')
 
-    modal.classList.add("mostrar");
-    janela_escura.classList.add("mostrar");
-    imagem.classList.add("mostrar");
+    modal.style.display='flex'
+    janela.style.display='flex'
+    
+
 }
 
+// Função para fechar o modal
 function fechar_modal() {
-    let modal = document.querySelector(".modal");
-    let janela_escura = document.querySelector(".janela_escura");
-    let imagem = document.querySelector(".imagem");
+    let modal = document.querySelector('.modal_fundo');
+    let janela = document.querySelector('#janela_escura')
+    document.body.classList.remove('blur')
+    
+    modal.style.display='none'
+    janela.style.display='none'
 
-    modal.classList.remove("mostrar");
-    janela_escura.classList.remove("mostrar");
-    imagem.classList.remove("mostrar");
 }
