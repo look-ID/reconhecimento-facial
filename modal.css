@@ -6,59 +6,61 @@
     box-sizing: border-box;
 }
 
-.modal_fundo{
+.modal_fundo {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: hsl(0, 0%, 90%);
     width: 60%;
     height: 85vh;
     border-radius: 46px;
-    margin: auto;
-    display: none;
+    display: none; /* Inicialmente escondido */
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
-    opacity: 1;
-    transition: opacity 1.0s ease, visibility 2.0s;
-    
-    div { /* card */
+    opacity: 0; /* Começa invisível */
+    transition: opacity 1s ease-in-out; /* Transição de opacidade */
+}
 
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        height: 306px;
-        width: 220px;
-        border-top: 3px solid black;
-        border-radius: 0px 0px 25px 25px ;
-        color: white;
-        font-size: 16px;
-        font-weight: 700;
-        font-family: Arial, Helvetica, sans-serif;
+.modal_fundo.mostrar {
+    display: flex; /* Mostrar modal */
+    opacity: 1; /* Tornar visível */
+}
 
-        img{
-            width: 100px;
-            margin: auto;
-        }
+.modal_fundo div { /* card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 306px;
+    width: 220px;
+    border-top: 3px solid black;
+    border-radius: 0px 0px 25px 25px;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
-        div{ /* div dos textos */
-            width: 100%;
-            height: 100px;
-            border-radius: 0px 0px 25px 25px ;
-            background: #13334A;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
+.modal_fundo div img {
+    width: 100px;
+    margin: auto;
+}
 
-    }
+.modal_fundo div div { /* div dos textos */
+    width: 100%;
+    height: 100px;
+    border-radius: 0px 0px 25px 25px;
+    background: #13334A;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .modal_fundo2{
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: hsl(0, 0%, 90%);

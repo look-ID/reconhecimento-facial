@@ -22,4 +22,12 @@ function fechar_modal() {
     janela.style.display='none'
 }
 
+window.onload = function() {
+    setTimeout(function() {
+        var modal = document.querySelector('.modal_fundo');
+        modal.classList.add('mostrar');
+    }, 1500); // 1 segundo de atraso
+};
+
+
 abrir_modal()
