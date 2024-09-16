@@ -7,7 +7,7 @@ import numpy as np
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, origins=["http://127.0.0.1:5501"], methods=["GET", "POST"], allow_headers=["Content-Type"])
+CORS(app, origins=["https://lookid.tec.br/"], methods=["GET", "POST"], allow_headers=["Content-Type"])
 
 # Configurações do AWS S3
 BUCKET_NAME = 'imagens-face-recognition'
