@@ -57,14 +57,14 @@
             formData.append('image', renamedFile);
 
             try {
-                const response = await fetch('https://lookid.com.br/upload_image', {
+                const response = await fetch('http://127.0.0.1:8080/upload_image', {
                     method: 'POST',
                     body: formData
                 });
 
                 const data = await response.json();
                 if (response.ok) {
-                    result.textContent = `Imagem enviada com sucesso: ${data.filename}`;
+                    result.textContent = `Imagem cadastrada com sucesso: ${data.filename}`;
                 } else {
                     result.textContent = `Erro: ${data.error}`;
                 }
@@ -80,7 +80,7 @@
                 formData.append('image', blob, 'captured_image.jpg');
 
                 try {
-                    const response = await fetch('https://lookid.com.br/recognize_face', {
+                    const response = await fetch('http://127.0.0.1:8080/recognize_face', {
                         method: 'POST',
                         body: formData
                     });
@@ -89,9 +89,12 @@
                     if (data.error) {
                         result.textContent = `Erro: ${data.error}`;
                         userImage.src = ''; // Limpa imagem em caso de erro
-                    } else {
+                    } else if (data.result === 'Rosto identificado') {
                         result.textContent = `Resultado: ${data.result}, Nome: ${data.name}`;
-                        userImage.src = URL.createObjectURL(blob); // Exibe imagem capturada
+                        userImage.src = data.image_url; // Exibe a imagem encontrada no S3
+                    } else {
+                        result.textContent = data.result;
+                        userImage.src = ''; // Limpa imagem em caso de erro
                     }
                 } catch (error) {
                     result.textContent = `Erro: ${error.message}`;

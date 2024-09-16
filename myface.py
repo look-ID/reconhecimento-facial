@@ -7,7 +7,7 @@ import numpy as np
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, origins=["https://gustavodesousalima.github.io/"], methods=["GET", "POST"], allow_headers=["Content-Type"])
+CORS(app, origins=["https://lookid.tec.br/"], methods=["GET", "POST"], allow_headers=["Content-Type"])
 
 # Configurações do AWS S3
 BUCKET_NAME = 'imagens-face-recognition'
@@ -58,7 +58,7 @@ def upload_image():
     s3_client = boto3.client('s3')
     s3_client.upload_fileobj(file, BUCKET_NAME, f'{PREFIXO_IMAGENS}{file_name}')
     
-    return jsonify({'message': 'Imagem enviada com sucesso', 'filename': file_name})
+    return jsonify({'message': 'Imagem cadastrada com sucesso', 'filename': file_name})
 
 @app.route('/recognize_face', methods=['POST'])
 def recognize_face():
@@ -81,9 +81,14 @@ def recognize_face():
     if any(comparacoes):
         index = comparacoes.index(True)
         nome_imagem = nomes_imagens[index]
-        return jsonify({'result': f'Match encontrado: Distância: {distancias[index]}', 'name': nome_imagem})
+        url_imagem = f'https://{BUCKET_NAME}.s3.amazonaws.com/{nome_imagem}'
+        return jsonify({
+            'result': 'Rosto identificado',
+            'image_url': url_imagem,
+            'name': nome_imagem
+        })
     else:
-        return jsonify({'result': 'Nenhum match encontrado'})
+        return jsonify({'result': 'Rosto não identificado'})
 
 if __name__ == '__main__':
     app.run(port=8080)
