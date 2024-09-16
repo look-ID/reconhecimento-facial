@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="myface.css">
+    <link rel="stylesheet" href="modal.css">
     <title>Face Recognition</title>
 </head>
 <body>
@@ -19,7 +20,7 @@
         <input type="file" id="fileInput">
     </div>
     <button onclick="uploadImage()">Cadastrar</button>
-
+    
     <video id="video" autoplay></video>
     <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
     <div id="mage"> 
@@ -29,9 +30,41 @@
     <button onclick="captureFrame()">Capturar e Reconhecer</button>
     <p id="result"></p>
     <div id="imageUse">
-        <img id="userImage" src="" alt="User Image">
+        <img id="userImage" src="image/img-logo.png" alt="User Image">
     </div>
+    <section class="modal_fundo">
+        <div>
+            <img src="img/Frame 10.png">
+            <div>
+                <p>    
+                    Habilite a Câmera para
+                    o Reconhecimento Facial.
+                </p>
+            </div>
+        </div>
 
+        <div>
+            <img src="img/Frame 8.png">
+            <div>
+                <p>    
+                    Habilite a Câmera para
+                    o Reconhecimento Facial.
+                </p>
+            </div>
+        </div>
+
+        <div>
+            <img src="img/Frame 9.png">
+            <div>
+                <p>    
+                    Habilite a Câmera para
+                    o Reconhecimento Facial.
+                </p>
+            </div>
+        </div>
+        
+        <aside><p>Prossiga</p></aside>
+    </section>
     <script>
         const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');
