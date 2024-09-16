@@ -7,21 +7,30 @@
     <title>Face Recognition</title>
 </head>
 <body>
-    <img src="./image/image-logo.jpg" alt="" class="logo">
+    <img src="./image/img-logo.png" alt="" class="logo">
     
     <!-- Input para o nome do usuário -->
-    <label for="nameInput">Nome:</label>
-    <input type="text" id="nameInput" placeholder="Insira seu nome">
+    <div class="Dent">
+        <label for="nameInput">Nome:</label>
+        <input type="text" id="nameInput" placeholder="Insira seu nome:">
+    </div>
     
-    <input type="file" id="fileInput">
+    <div>
+        <input type="file" id="fileInput">
+    </div>
     <button onclick="uploadImage()">Cadastrar</button>
 
-    <h2>Real-Time Video Feed</h2>
     <video id="video" autoplay></video>
     <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
+    <div id="mage"> 
+        <a href="#" style="color: red; font-weight: bold; font-size: 1.4em;">AVISO</a>
+        <a href="#">CLIQUE AQUI</a>
+    </div>
     <button onclick="captureFrame()">Capturar e Reconhecer</button>
     <p id="result"></p>
-    <img id="userImage" src="" alt="User Image">
+    <div id="imageUse">
+        <img id="userImage" src="" alt="User Image">
+    </div>
 
     <script>
         const video = document.getElementById('video');

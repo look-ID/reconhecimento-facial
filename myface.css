@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffffff;
+    background-color: #7EB5B9;
     color: #333;
     margin: 0;
     padding: 20px;
@@ -8,16 +8,49 @@ body {
     flex-direction: column;
     align-items: center;
 }
+#fileInput {
+    cursor: pointer;
+}
+#imageUse {
+    width: 400px;
+    height: auto;
+    border-radius: 20px;
+    padding: 20px;
+}
+#mage:hover {
+    background-color: #428dff;
+    cursor: pointer;
+    transform: translateY(10px, 10px);
+}
+#mage {
+    position: absolute;
+    top: 300px;
+    left: 70%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+    height: 70px;
+    background-color: #0066ff;
+    border-radius: 20px;
+    
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.578);
+}
+#mage a {
+    text-decoration: none;
+    padding: 5px;
+    color: #000;
+}
 
 /* Estilo para a imagem no canto esquerdo */
 .logo {
     position: absolute; /* Posicionamento absoluto em relação ao canto da página */
-    top: 20px;          /* Ajuste a distância do topo da página */
-    left: 20px;         /* Ajuste a distância do lado esquerdo da página */
-    width: 10%;       /* Defina a largura da imagem */
+    top: 0px;          /* Ajuste a distância do topo da página */
+    left: 0px;         /* Ajuste a distância do lado esquerdo da página */
+    width: 12%;       /* Defina a largura da imagem */
     height: auto;       /* Mantenha a proporção da imagem */
 }
-
 
 /* Título principal */
 h1 {
@@ -28,29 +61,29 @@ h1 {
 }
 
 
-
-/* Subtítulo */
-h2 {
-    font-size: 1.8em;
-    margin-top: 30px;
-    color: #666;
-}
-
 /* Input e Label */
 label {
+    color: #fff;
     font-size: 1.1em;
     margin-right: 10px;
 }
-
-input[type="text"], input[type="file"] {
+div input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1em;
+}
+input[type="text"]{
     padding: 8px;
     font-size: 1em;
     margin-bottom: 15px;
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    outline: none;
 }
 
 /* Botões */
@@ -59,24 +92,28 @@ button {
     font-size: 1em;
     color: white;
     background-color: #0066ff;
-    border: none;
+    border: 1px solid black;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    margin-top: 20px;
     transition: background-color 0.3s ease;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.299);
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #428dff;
+    padding: 11px 20px;
+    border: none;
 }
 
 /* Estilização do vídeo */
 video {
     width: 100%;
-    max-width: 640px;
-    border: 3px solid #333;
-    border-radius: 10px;
+    max-width: 500px;
+    border: 2px solid #333;
+    border-radius: 20px;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* Resultado */
@@ -93,6 +130,12 @@ img#userImage {
     margin-top: 20px;
     border-radius: 10px;
     border: 2px solid #ccc;
+}
+#avisos {
+    float: right;
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
 }
 
 /* Ajustes responsivos */
