@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #478bf2b0;
+    background-color: #548fb9;
     color: #333;
     margin: 0;
     padding: 20px;
@@ -8,6 +8,25 @@ body {
     flex-direction: column;
     align-items: center;
 }
+
+/* Estilizar a barra de rolagem */
+::-webkit-scrollbar {
+    width: 12px; /* Largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-track {
+    background-color: #548fb9; /* Cor da área de fundo da barra */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #f5f5f5; /* Cor da barra de rolagem */
+    border-radius: 10px; /* Arredondar as bordas */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #0a1c4b; /* Cor da barra de rolagem ao passar o mouse */
+}
+
 #fileInput {
     cursor: pointer;
 }
@@ -16,7 +35,7 @@ body {
     padding: 60px;
 }
 #mage:hover {
-    background-color: #bbbbbb;
+    background-color: #022b47;
     cursor: pointer;
     transform: translateY(10px, 10px);
 }
@@ -30,14 +49,15 @@ body {
     justify-content: center;
     width: 200px;
     height: 70px;
-    background-color: #ffffff;
+    background-color: #00345a;
     border-radius: 20px;
     box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.578);
+    font-weight: bold;
 }
 #mage a {
     text-decoration: none;
     padding: 5px;
-    color: #000;
+    color: #ffffff;
 }
 
 /* Estilo para a imagem no canto esquerdo */
@@ -52,21 +72,23 @@ body {
 /* Título principal */
 h1 {
     font-size: 2.5em;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 10px;
     text-align: center;
+    font-weight: bold;
 }
 
 
 /* Input e Label */
 label {
-    color: #000000;
+    color: #ffffff;
     font-size: 1.1em;
     margin-right: 10px;
+    font-weight: bold;
 }
 div input[type="file"] {
     padding: 10px;
-    border: 1px solid #000000;
+    border: 1px solid #ffffff;
     border-radius: 5px;
     color: #fff;
     font-size: 1em;
@@ -78,7 +100,7 @@ input[type="text"]{
     margin-bottom: 15px;
     width: 100%;
     max-width: 350px;
-    border: 1px solid #000000;
+    border: 1px solid #ffffff;
     border-radius: 5px;
     box-sizing: border-box;
     outline: none;
@@ -88,26 +110,25 @@ input[type="text"]{
 button {
     padding: 10px 20px;
     font-size: 1em;
-    color: rgb(0, 0, 0);
-    background-color: #ffffff;
-    border: none;
+    color: rgb(255, 255, 255);
+    background-color: #00345a;
     border-radius: 5px;
     cursor: pointer;
     margin-top: 20px;
-    transition: background-color 0.3s ease;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.299);
+    transition: background-color 0.1s ease;
+    box-shadow: 0px 2px 5px rgba(13, 13, 13, 0.299);
+    font-weight: bold;
 }
 
 button:hover {
-    background-color: #d5d5d5;
-    border: none;
+    background-color: #022b47;
 }
 
 /* Estilização do vídeo */
 video {
     width: 100%;
     max-width: 500px;
-    border: 2px solid #333;
+    border: 2px solid #ffffff;
     border-radius: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -117,7 +138,7 @@ video {
 p#result {
     font-size: 1.2em;
     margin-top: 20px;
-    color: #333;
+    color: #ffffff;
 }
 
 /* Imagem do usuário capturada */

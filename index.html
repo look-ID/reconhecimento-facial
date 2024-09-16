@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./image/img-logo.png" type="image/x-icon">
     <link rel="stylesheet" href="myface.css">
     <link rel="stylesheet" href="modal.css">
-    <title>Face Recognition</title>
+    <title>Look-ID - Biometria Facial</title>
 </head>
 <body>
     <main style="display: flex; justify-content: center; align-items: center; flex-direction: column; width: 100%; height: auto;">
@@ -21,7 +22,7 @@
         <input type="file" id="fileInput">
     </div>
 
-    <button onclick="uploadImage()">Cadastrar</button>
+    <button onclick="uploadImage()">Cadastrar Imagem</button>
     <video id="video" autoplay></video>
     
     <canvas id="canvas" width="640" height="480" style="display:none;"></canvas>
@@ -41,6 +42,7 @@
     </main>
     
     <section class="modal_fundo">
+        <h2 style="width: 100%; text-align: center; margin-top: 50px; font-weight: bold;">Seja bem vindo</h2>
         <div>
             <img src="img/Frame 10.png">
             <div>
@@ -69,12 +71,46 @@
             </div>
         </div>
         
-        <aside onclick="fechar_modal()"><p style="cursor: pointer;">Prossiga</p></aside>
+        <aside onclick="proximo_modal()"><p style="cursor: pointer;">Prossiga</p></aside>
+    </section>
+
+    <section class="modal_fundo2">
+        <h2 style="width: 100%; text-align: center; margin-top: 50px; font-weight: bold;">Passo a Passo</h2>
+
+        <div>
+            <img src="img/register.png">
+            <div>
+                <p>
+                    1- Insira Seu nome
+                </p>
+            </div>
+        </div>
+
+        <div>
+            <img src="img/download.png">
+            <div>
+                <p>
+                    2-Suba sua imagem (preferência por selfie)
+                </p>
+            </div>
+        </div>
+
+        <div>
+            <img src="img/authentication.png">
+            <div>
+                <p>
+                    3- Clique em cadastrar imagem
+                </p>
+            </div>
+        </div>
+        
+        <aside onclick="fechar_modal()"><p style="cursor: pointer;">Fechar</p></aside>
     </section>
 
     <!-- Script Modal -->
 
     <script src="modal.js"></script>
+    <script src="modal2.js"></script>
 
     <!-- Script servidor -->
     <script>

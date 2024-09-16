@@ -12,11 +12,13 @@ function abrir_modal() {
 // Função para fechar o modal
 function fechar_modal() {
     let modal = document.querySelector('.modal_fundo');
+    let modal2 = document.querySelector('.modal_fundo2');
     let janela = document.querySelector('#janela_escura')
     document.querySelector("main").classList.remove("blur")
     document.querySelector("body").style.overflowY="auto"
     
     modal.style.display='none'
+    modal2.style.display='none'
     janela.style.display='none'
 }
 
