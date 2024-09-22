@@ -7,7 +7,7 @@ import numpy as np
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, origins=["https://gustavodesousalima.github.io/"], methods=["GET", "POST"], allow_headers=["Content-Type"])
+CORS(app, origins=["http://127.0.0.1:5501"], methods=["GET", "POST"], allow_headers=["Content-Type"])
 
 # Configurações do AWS S3
 BUCKET_NAME = 'imagens-face-recognition'
@@ -35,9 +35,9 @@ def carregar_imagens_s3(bucket_name, prefixo_imagens):
                 img = Image.open(BytesIO(imagem_bytes))
                 img = img.convert('RGB')
                 img_np = np.array(img)
-                codificacao = fr.face_encodings(img_np)
-                if codificacao:
-                    codificacoes.append(codificacao[0])
+                codificacoes_faces = fr.face_encodings(img_np)
+                for codificacao in codificacoes_faces:
+                    codificacoes.append(codificacao)
                     nomes_imagens.append(nome_arquivo)
 
         if response.get('IsTruncated'):
@@ -58,7 +58,7 @@ def upload_image():
     s3_client = boto3.client('s3')
     s3_client.upload_fileobj(file, BUCKET_NAME, f'{PREFIXO_IMAGENS}{file_name}')
     
-    return jsonify({'message': 'Imagem enviada com sucesso', 'filename': file_name})
+    return jsonify({'message': 'Imagem cadastrada com sucesso', 'filename': file_name})
 
 @app.route('/recognize_face', methods=['POST'])
 def recognize_face():
@@ -69,21 +69,36 @@ def recognize_face():
     img = Image.open(file.stream)
     img = img.convert('RGB')
     img_np = np.array(img)
-    face_encoding = fr.face_encodings(img_np)
+    face_encodings = fr.face_encodings(img_np)
 
-    if not face_encoding:
+    if not face_encodings:
         return jsonify({'error': 'Nenhum rosto encontrado na imagem'}), 400
 
+    # Carregar codificações do S3
     codificacoes_imagens, nomes_imagens = carregar_imagens_s3(BUCKET_NAME, PREFIXO_IMAGENS)
-    comparacoes = fr.compare_faces(codificacoes_imagens, face_encoding[0])
-    distancias = fr.face_distance(codificacoes_imagens, face_encoding[0])
+    
+    min_distancia = float('inf')
+    nome_imagem_identificado = None
 
-    if any(comparacoes):
-        index = comparacoes.index(True)
-        nome_imagem = nomes_imagens[index]
-        return jsonify({'result': f'Match encontrado: Distância: {distancias[index]}', 'name': nome_imagem})
+    for face_encoding in face_encodings:
+        for i, codificacao in enumerate(codificacoes_imagens):
+            distancia = fr.face_distance([codificacao], face_encoding)[0]
+            # Adiciona log para depuração
+            print(f'Distância calculada: {distancia}')
+            if distancia < min_distancia:
+                min_distancia = distancia
+                if distancia < 0.45:  # Ajuste o limiar conforme necessário
+                    nome_imagem_identificado = nomes_imagens[i]
+    
+    if nome_imagem_identificado:
+        url_imagem = f'https://{BUCKET_NAME}.s3.amazonaws.com/{nome_imagem_identificado}'
+        return jsonify({
+            'result': 'Rosto identificado',
+            'image_url': url_imagem,
+            'name': nome_imagem_identificado
+        })
     else:
-        return jsonify({'result': 'Nenhum match encontrado'})
+        return jsonify({'result': 'Rosto não identificado'})
 
 if __name__ == '__main__':
     app.run(port=8080)
