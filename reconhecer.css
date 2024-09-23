@@ -96,7 +96,7 @@ button:hover{
 .popup-result {
     position: fixed;
     top: 10px;
-    right: 10px;
+    right: 10px; 
     background-color: rgb(255, 255, 255);
     padding: 10px;
     font-size: 1.4rem;
@@ -140,3 +140,6 @@ button:hover{
 .loading.show {
     display: block;
 }
+
+
+
