@@ -12,9 +12,6 @@ A **Look-ID** permite que os usuários subam uma imagem e testem o reconheciment
 
 Nosso compromisso é **não utilizar** as informações pessoais de nossos usuários para nenhum propósito além do reconhecimento facial. Valorizamos a transparência e a confiança, e estamos sempre buscando maneiras de melhorar nossos serviços e proteger os dados dos nossos usuários.
 
-## Agradecimento
-
-Agradecemos por escolher a **Look-ID**! Juntos, estamos moldando o futuro do reconhecimento facial.
 
 ## Modelo de configuração do Nginx 
 
@@ -41,3 +38,7 @@ server {
     server_name lookid.com.br;
     return 301 https://$host$request_uri;
 }
+
+## Agradecimento
+
+Agradecemos por escolher a **Look-ID**! Juntos, estamos moldando o futuro do reconhecimento facial.
