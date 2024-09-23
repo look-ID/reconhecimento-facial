@@ -100,7 +100,6 @@ h2{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    flex-wrap: wrap; /* Flexibilidade para telas menores */
     padding: 20px;
 }
 
